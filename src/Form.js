@@ -1,14 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import Input from './Input';
 
 
-class Form extends from Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      value: '',
-      items: []
-    }
+class Form extends Component {
+
+  //let { values, lists } = this.props;
+
+  state = {
+    //value: values,
+    //items: lists,
+    type: 'text',
+    placeholder:''
   }
+  
   
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -25,18 +30,19 @@ class Form extends from Component {
     return this.state.value === '';
   };
 
-  
-
 
   render(){
+    
+    let { values, lists } = this.props;
+    
     return(
-      <form onSubmit={this.addItem}>
-        <input
-          type="text"
-          placeholder="Enter New Item"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
+      <form onSubmit={this.props.submit()}>
+        <Input 
+		  type={this.state.type} 
+		  placeholder={this.state.placeholder} 
+		  value={this.props.values}
+		  onchange={this.handleChange}
+	  	/>
         <button disabled={this.inputIsEmpty()}>Add</button>
       </form>
     )
