@@ -11,7 +11,11 @@ class List extends from Component {
   }
   
   render(){
-    return()
+    return(
+      <ol className="item-list">
+        {this.state.items.map((item, index) => <li key={index}>{item}</li>)}
+      </ol>
+    )
   }
 }
 

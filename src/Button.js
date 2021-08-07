@@ -10,8 +10,16 @@ class Button extends from Component {
     //}
   }
   
+  deleteLastItem = event => {
+    this.setState(prevState => ({ items: this.state.items.slice(0, -1) }));
+  };
+  
   render(){
-    return()
+    return(
+      <button onClick={this.deleteLastItem} disabled={this.noItemsFound()}>
+        Delete Last Item
+      </button>
+    )
   }
 }
 
